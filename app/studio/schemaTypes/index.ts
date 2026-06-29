@@ -1,5 +1,3 @@
-import {eventType} from './eventType'
-import {artistType} from './artistType'
-import {venueType} from './venueType'
+import {BlogType} from './blogType'
 
-export const schemaTypes = [artistType, eventType, venueType]
+export const schemaTypes = [BlogType]
