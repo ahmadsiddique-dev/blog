@@ -102,5 +102,11 @@ export const BlogType = defineType({
         },
       ],
     }),
+    defineField({
+      name: 'show',
+      type: 'boolean',
+      title: 'Show',
+      initialValue: true,
+    })
   ],
 })

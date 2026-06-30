@@ -15,20 +15,6 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
-export type VenueReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "venue";
-};
-
-export type ArtistReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "artist";
-};
-
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
@@ -36,46 +22,56 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
-export type Event = {
+export type Blog = {
   _id: string;
-  _type: "event";
+  _type: "blog";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
+  title?: string;
   slug?: Slug;
-  eventType?: "In-person" | "virtual";
-  date?: string;
-  doorsOpen?: number;
-  venue?: VenueReference;
-  headline?: ArtistReference;
-  image?: {
+  author?: string;
+  publishedAt?: string;
+  readTime?: number;
+  description?: string;
+  thumbnail?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
     _type: "image";
   };
-  details?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  tickets?: string;
+  detail?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }
+  >;
+  show?: boolean;
 };
 
 export type SanityImageCrop = {
@@ -94,38 +90,10 @@ export type SanityImageHotspot = {
   width?: number;
 };
 
-export type Venue = {
-  _id: string;
-  _type: "venue";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  city?: string;
-  country?: string;
-};
-
 export type Slug = {
   _type: "slug";
   current?: string;
   source?: string;
-};
-
-export type Artist = {
-  _id: string;
-  _type: "artist";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  description?: string;
-  photo?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
 };
 
 export type SanityImagePaletteSwatch = {
@@ -226,15 +194,11 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | VenueReference
-  | ArtistReference
   | SanityImageAssetReference
-  | Event
+  | Blog
   | SanityImageCrop
   | SanityImageHotspot
-  | Venue
   | Slug
-  | Artist
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -247,81 +211,12 @@ export type AllSanitySchemaTypes =
 // Source: ../web/src/app/events/[slug]/page.tsx
 // Variable: EVENT_QUERY
 // Query: *[    _type == "event" &&    slug.current == $slug  ][0]{  ...,  "date": coalesce(date, now()),  "doorsOpen": coalesce(doorsOpen, 0),  headline->,  venue->}
-export type EVENT_QUERY_RESULT = {
-  _id: string;
-  _type: "event";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  eventType?: "In-person" | "virtual";
-  date: string;
-  doorsOpen: number | 0;
-  venue: {
-    _id: string;
-    _type: "venue";
-    _createdAt: string;
-    _updatedAt: string;
-    _rev: string;
-    name?: string;
-    city?: string;
-    country?: string;
-  } | null;
-  headline: {
-    _id: string;
-    _type: "artist";
-    _createdAt: string;
-    _updatedAt: string;
-    _rev: string;
-    name?: string;
-    description?: string;
-    photo?: {
-      asset?: SanityImageAssetReference;
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-  } | null;
-  image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  details?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  tickets?: string;
-} | null;
+export type EVENT_QUERY_RESULT = null;
 
 // Source: ../web/src/app/page.tsx
 // Variable: EVENTS_QUERY
 // Query: *[  _type == "event"  && defined(slug.current)  && date > now()]|order(date asc){_id, name, slug, date}
-export type EVENTS_QUERY_RESULT = Array<{
-  _id: string;
-  name: string | null;
-  slug: Slug | null;
-  date: string | null;
-}>;
+export type EVENTS_QUERY_RESULT = Array<never>;
 
 // Query TypeMap
 import "@sanity/client";
