@@ -11,7 +11,7 @@ export default function Header() {
             Y
           </div>
           <span className="text-sm font-bold tracking-widest text-ink font-sans uppercase group-hover:text-primary transition-colors duration-150">
-            [Your_Name]
+            Ahmad Siddique
           </span>
         </Link>
         <div className="flex items-center gap-6">

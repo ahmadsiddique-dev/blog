@@ -7,7 +7,7 @@ export const components: PortableTextComponents = {
   types: {
     image: ({ value }) => (
       <figure className="group relative overflow-hidden rounded-2xl border border-hairline bg-[#0d0d0d] hover:border-hairline-strong hover:shadow-lg transition-all duration-300 my-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-white/2 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
         <div className="relative aspect-video overflow-hidden bg-surface-card">
           <Image
             src={urlFor(value).width(1000).auto("format").url()}
@@ -26,7 +26,7 @@ export const components: PortableTextComponents = {
 
     code: ({ value }) => (
       <pre className="group relative overflow-hidden rounded-2xl border border-hairline bg-[#0d0d0d] p-6 transition-all duration-300 hover:border-hairline-strong my-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-white/2 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
         <div className="flex items-center gap-2 mb-4 text-xs uppercase tracking-wider text-mute select-none">
           <IconCode className="h-4.5 w-4.5" stroke={1.5} />
           <span>{value.language || "Code"}</span>
@@ -71,7 +71,7 @@ export const components: PortableTextComponents = {
 
     blockquote: ({ children }) => (
       <blockquote className="group relative overflow-hidden rounded-2xl border border-hairline bg-[#0d0d0d] p-8 transition-all duration-300 hover:border-hairline-strong my-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-white/2 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
         <IconQuote className="h-8 w-8 text-primary/40 mb-4" stroke={1.5} />
         <p className="text-lg sm:text-xl leading-relaxed text-ink italic mb-4">
           {children}
@@ -119,7 +119,7 @@ export const components: PortableTextComponents = {
         >
           <span className="relative">
             {children}
-            <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+            <span className="absolute bottom-0 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
           </span>
           {isExternal && (
             <IconExternalLink className="h-3.5 w-3.5 opacity-70" />

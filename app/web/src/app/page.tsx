@@ -30,10 +30,10 @@ export default async function IndexPage() {
 
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 lg:py-28 max-w-5xl mx-auto flex flex-col items-center text-center gap-6">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-ink max-w-3xl leading-tight font-sans">
-          Explore Blogs from [Name]
+          Ahmad Siddique Blogs
         </h1>
         <p className="text-sm sm:text-base text-body max-w-xl leading-relaxed">
-          lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
+          Well, If you are interested in reading <strong>Web Development</strong> stuff then this is going to be worth your time, So join me and be the part of the journey. 
         </p>
       </section>
 

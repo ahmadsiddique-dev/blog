@@ -8,14 +8,14 @@ export default function Footer() {
         <div className="flex flex-col gap-2.5 max-w-md">
           <Link href="/" className="flex items-center gap-2 select-none w-fit">
             <span className="text-sm font-bold tracking-widest text-ink uppercase">
-              [Your_Name]
+              Ahmad Siddique
             </span>
           </Link>
           <p className="text-xs text-mute leading-relaxed">
             lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <p className="text-xs text-stone mt-1">
-            &copy; {new Date().getFullYear()} [Your_Name]. All rights reserved.
+            &copy; {new Date().getFullYear()} Ahmad Siddique. All rights reserved.
           </p>
         </div>
         <div className="flex flex-col gap-3 min-w-32">
