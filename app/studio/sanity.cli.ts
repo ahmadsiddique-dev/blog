@@ -19,3 +19,5 @@ export default defineCliConfig({
     generates: '../web/src/sanity/types.ts',
   },
 })
+
+// Just so that i can rebuild it

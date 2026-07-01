@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { defineQuery, PortableText } from "next-sanity";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,6 +23,50 @@ const EVENT_QUERY = defineQuery(`*[show == true && slug.current == $slug]{
   thumbnail,
   detail
 }`);
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { data: blog } = await sanityFetch({
+    query: EVENT_QUERY,
+    params: resolvedParams,
+  });
+
+  const posts = blog as any;
+  if (!posts || posts.length === 0) {
+    return {
+      title: "Blog Post Not Found",
+    };
+  }
+
+  const post = posts[0];
+  const ogImage = post.thumbnail ? urlFor(post.thumbnail).width(1200).height(630).url() : undefined;
+
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: {
+      canonical: `/blog/${resolvedParams.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.publishedAt,
+      authors: [post.author || "Ahmad Siddique"],
+      images: ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: post.title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
+}
 
 export default async function EventPage({
   params,
@@ -89,7 +134,7 @@ export default async function EventPage({
       </header>
 
       {thumbnail && (
-        <figure className="relative w-full aspect-[21/9] rounded-lg overflow-hidden border border-hairline bg-surface-card shadow-none my-2">
+        <figure className="relative w-full aspect-21/9 rounded-lg overflow-hidden border border-hairline bg-surface-card shadow-none my-2">
           <Image
             src={urlFor(thumbnail).width(1000).height(430).url()}
             alt={title || "Featured image"}

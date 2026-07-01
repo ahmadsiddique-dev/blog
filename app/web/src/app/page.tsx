@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { defineQuery } from "next-sanity";
@@ -5,6 +6,14 @@ import { sanityFetch } from "@/sanity/live";
 import SubscribeForm from "@/app/components/elements/SubscribeForm";
 import Keycap from "@/app/components/elements/Keycap";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Ahmad Siddique Blogs - Home",
+  description: "Well, If you are interested in reading Web Development stuff then this is going to be worth your time, So join me and be the part of the journey.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const BLOGS_QUERY = defineQuery(`*[show == true] | order(publishedAt desc){
   title,

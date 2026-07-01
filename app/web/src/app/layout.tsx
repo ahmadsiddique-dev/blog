@@ -16,8 +16,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ahmad Siddique - Developer Blog",
-  description: "A dark-canvas developer blog that treats content with pixel-perfect restraint.",
+  title: {
+    template: "%s | Ahmad Siddique Blogs",
+    default: "Ahmad Siddique Blogs - Engineering, Design & Ergonomics",
+  },
+  description: "A publication exploring developer ergonomics, modern web engineering details, CMS architecture, and minimalist design systems by Ahmad Siddique.",
+  metadataBase: new URL("https://ahmadsiddique.dev"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Ahmad Siddique Blogs - Engineering, Design & Ergonomics",
+    description: "A publication exploring developer ergonomics, modern web engineering details, CMS architecture, and minimalist design systems by Ahmad Siddique.",
+    url: "https://ahmadsiddique.dev",
+    siteName: "Ahmad Siddique Blogs",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ahmad Siddique Blogs - Engineering, Design & Ergonomics",
+    description: "A publication exploring developer ergonomics, modern web engineering details, CMS architecture, and minimalist design systems by Ahmad Siddique.",
+    creator: "@ahmadsiddique.dev",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -41,5 +73,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
