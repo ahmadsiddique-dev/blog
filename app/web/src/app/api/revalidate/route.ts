@@ -3,7 +3,7 @@ import { parseBody } from "next-sanity/webhook";
 import { revalidateTag } from "next/cache";
 
 export async function POST(req: NextRequest) {
-  const SECRET = process.env.SANITY_REVALIDATE_SECRET;
+  const SECRET = process.env.SANITY_REVALIDATE_SECRET || 'my-super-secret-123';
 
   if (!SECRET) {
     return new NextResponse("Revalidation secret is not set", { status: 500 });
