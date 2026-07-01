@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-const BLOGS_QUERY = defineQuery(`*[show == true] | order(publishedAt desc){
+const BLOGS_QUERY = defineQuery(`*[_type == "blog" && show == true] | order(publishedAt desc){
   title,
   "slug": slug.current,
   description,

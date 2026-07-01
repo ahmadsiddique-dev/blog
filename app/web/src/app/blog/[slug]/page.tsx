@@ -12,7 +12,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { IconArrowLeft } from "@tabler/icons-react";
 
-const EVENT_QUERY = defineQuery(`*[show == true && slug.current == $slug]{
+const EVENT_QUERY = defineQuery(`*[_type == "blog" && show == true && slug.current == $slug]{
   title,
   slug,
   description,
@@ -33,6 +33,7 @@ export async function generateMetadata({
   const { data: blog } = await sanityFetch({
     query: EVENT_QUERY,
     params: resolvedParams,
+    tags: ["blog"],
   });
 
   const posts = blog as any;
