@@ -76,6 +76,7 @@ export default async function EventPage({
   const { data: blog } = await sanityFetch({
     query: EVENT_QUERY,
     params: await params,
+    tags: ["blog"],
   });
 
   const posts = blog as any;

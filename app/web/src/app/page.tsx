@@ -26,7 +26,7 @@ const BLOGS_QUERY = defineQuery(`*[show == true] | order(publishedAt desc){
 }`);
 
 export default async function IndexPage() {
-  const { data: blogs } = await sanityFetch({ query: BLOGS_QUERY });
+  const { data: blogs } = await sanityFetch({ query: BLOGS_QUERY, tags: ["blog"] });
   const posts = blogs as any;
 
   return (
