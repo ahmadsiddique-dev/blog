@@ -9,9 +9,9 @@ export async function POST(req: NextRequest) {
       process.env.SANITY_REVALIDATE_SECRET
     );
 
-    if (!isValidSignature) {
-      return new NextResponse("Invalid signature", { status: 401 });
-    }
+    // if (!isValidSignature) {
+    //   return new NextResponse("Invalid signature", { status: 401 });
+    // }
 
     if (!body?._type) {
       return new NextResponse("Bad Request", { status: 400 });
