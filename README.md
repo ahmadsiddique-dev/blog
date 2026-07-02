@@ -4,11 +4,25 @@
 
 ![alt text](image.png)
 
+## Tech Stack
+| Technology | Purpose |
+| --- | --- | 
+| Nextjs | We know why we use Nextjs | 
+| Sanity | Content Operation Management |
+| Tailwind | Because I can't write CSS | 
+| Shadcn UI | UI library to make my life easy |
+
 ## Installation
 **git** must be installed on your system before proceding:
 
 ```bash
 git clone https://github.com/ahmadsiddique-dev/blog.git
+```
+
+## Twist
+you have to setup an Environment variable in /app/web/src
+```bash 
+SANITY_API_READ_TOKEN=
 ```
 
 change directory
