@@ -31,6 +31,7 @@ export type Blog = {
   title?: string;
   slug?: Slug;
   time?: number;
+  createdAt?: string;
   description?: string;
   image?: {
     asset?: SanityImageAssetReference;
@@ -207,21 +208,22 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: ../web/src/sanity/lib/queries.ts
-// Variable: getBlogs
+// Variable: getBlogsQuery
 // Query: *[_type == "blog"] {    _id,    title,    slug,    time,    description,    "image": image.asset->url  }
-export type GetBlogsResult = Array<{
+export type GetBlogsQueryResult = Array<{
   _id: string;
-  title: string | null;
-  slug: Slug | null;
-  time: number | null;
-  description: string | null;
-  image: string | null;
+  title: string;
+  slug: Slug;
+  createdAt: string;
+  time: number;
+  description: string;
+  image: string;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "blog"] {\n    _id,\n    title,\n    slug,\n    time,\n    description,\n    "image": image.asset->url\n  }\n': GetBlogsResult;
+    '\n  *[_type == "blog"] {\n    _id,\n    title,\n    slug,\n    time,\n    description,\n    "image": image.asset->url\n  }\n': GetBlogsQueryResult;
   }
 }

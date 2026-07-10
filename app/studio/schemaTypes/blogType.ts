@@ -28,14 +28,20 @@ export const BlogType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'createdAt',
+      type: 'datetime',
+      title: 'Created At',
+      initialValue: new Date().toISOString(),
+    }),
+    defineField({
       name: 'description',
       type: 'text',
       title: 'Description',
       validation: (Rule) =>
         Rule.required()
           .min(10)
-          .max(120) // Otherwise it will overflow from my card
-          .error('Description must be between 10 and 120 characters long.'),
+          .max(130) // Otherwise it will overflow from my card
+          .error('Description must be between 10 and 130 characters long.'),
     }),
     defineField({
       name: 'image',
@@ -68,7 +74,6 @@ export const BlogType = defineType({
       of: [
         {
           type: 'block',
-          
         },
         {
           type: 'image',
@@ -90,6 +95,6 @@ export const BlogType = defineType({
       type: 'boolean',
       title: 'Show',
       initialValue: true,
-    })
+    }),
   ],
 })

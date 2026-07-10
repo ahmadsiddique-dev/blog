@@ -6,6 +6,7 @@ export const getBlogsQuery = defineQuery(`
     title,
     slug,
     time,
+    createdAt,
     description,
     "image": image.asset->url
   }

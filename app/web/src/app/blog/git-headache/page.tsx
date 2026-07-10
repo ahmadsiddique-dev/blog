@@ -1,5 +1,4 @@
 import BlogNav from "@/components/elements/BlogNav";
-import React from "react";
 import GitHeadace from "@/components/md/blog/git-headache.mdx";
 import BlogFooter from "@/components/elements/BlogFooter";
 import { Metadata } from "next";
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
       },
     ],
     type: "article",
-    authors: [blogInfo?.author || "Ahmad Siddique"],
+    authors: ["Ahmad Siddique"],
   },
   twitter: {
     card: "summary_large_image",

@@ -2,10 +2,9 @@ import { Card } from "@/components/ui/card";
 import { ArrowLeft, BookOpenText, CalendarRange } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import blogsData from "@/data/blogs.json";
 import { Metadata } from "next";
-import { client } from "@/sanity/client";
 import { getBlogs } from "./_lib/get-blogs";
+import { formatDate } from "./_lib/time-formater";
 
 export const metadata: Metadata = {
   title: "My Blogs | Ahmad Siddique",
@@ -49,8 +48,8 @@ export default async function BlogPage() {
       </div> 
       <h1 className="pb-7 text-3xl font-bold">My Blogs</h1>
       <section className="flex flex-col gap-4">
-        {blogsData.blogs.map((blog) => (
-          <Link key={blog.id} href={blog.slug}>
+        {blogs.map((blog) => (
+          <Link key={blog._id} href={blog.slug ? `/blog/${blog.slug.current}` : "/not-found"}>
             <Card className="flex flex-col sm:flex-row w-full sm:max-w-3xl p-4 gap-5 bg-transparent border-zinc-200 max-w-107.5 mx-auto dark:border-zinc-800 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
               <div className="relative w-full sm:w-65 h-45 shrink-0 border border-zinc-200 dark:border-zinc-800 rounded-lg flex items-center justify-center bg-zinc-50 dark:bg-[#0a0a0a] overflow-hidden">
                 <Image
@@ -67,11 +66,11 @@ export default async function BlogPage() {
                 <div className="flex items-center justify-start gap-5 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-4">
                   <span className="flex items-center gap-1.5">
                     <CalendarRange size={16} />
-                    {blog.date}
+                    {formatDate(blog.createdAt)}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <BookOpenText size={16} />
-                    {blog.readTime}
+                    <BookOpenText className="mt-0.5" size={16} />
+                    {blog.time} min read
                   </span>
                 </div>
                 <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 line-clamp-3 leading-relaxed">
