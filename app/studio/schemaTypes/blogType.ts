@@ -21,17 +21,17 @@ export const BlogType = defineType({
       },
       validation: (Rule) => Rule.required().error('Slug is required.'),
     }),
-    defineField({
-      name: 'author',
-      type: 'string',
-      title: 'Author',
-      initialValue: 'Yasir Munir',
-      validation: (Rule) =>
-        Rule.required()
-          .min(3)
-          .max(50)
-          .error('Author name must be between 3 and 50 characters long.'),
-    }),
+    // defineField({
+    //   name: 'author',
+    //   type: 'string',
+    //   title: 'Author',
+    //   initialValue: 'Yasir Munir',
+    //   validation: (Rule) =>
+    //     Rule.required()
+    //       .min(3)
+    //       .max(50)
+    //       .error('Author name must be between 3 and 50 characters long.'),
+    // }),
     defineField({
       name: 'publishedAt',
       type: 'datetime',
