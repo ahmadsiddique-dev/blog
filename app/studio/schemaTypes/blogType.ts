@@ -21,23 +21,6 @@ export const BlogType = defineType({
       },
       validation: (Rule) => Rule.required().error('Slug is required.'),
     }),
-    // defineField({
-    //   name: 'author',
-    //   type: 'string',
-    //   title: 'Author',
-    //   initialValue: 'Yasir Munir',
-    //   validation: (Rule) =>
-    //     Rule.required()
-    //       .min(3)
-    //       .max(50)
-    //       .error('Author name must be between 3 and 50 characters long.'),
-    // }),
-    // defineField({
-    //   name: 'time',
-    //   type: 'datetime',
-    //   title: 'Published At',
-    //   initialValue: new Date().toISOString(),
-    // }),
     defineField({
       name: 'time',
       type: 'number',
@@ -51,8 +34,8 @@ export const BlogType = defineType({
       validation: (Rule) =>
         Rule.required()
           .min(10)
-          .max(300)
-          .error('Description must be between 10 and 300 characters long.'),
+          .max(120) // Otherwise it will overflow from my card
+          .error('Description must be between 10 and 120 characters long.'),
     }),
     defineField({
       name: 'image',

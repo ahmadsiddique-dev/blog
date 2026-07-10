@@ -4,15 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import blogsData from "@/data/blogs.json";
 import { Metadata } from "next";
-
-export interface Blog {
-    id: string;
-    slug: string;
-    title: string;
-    image: string;
-    description: string;
-    time: string;
-}
+import { client } from "@/sanity/client";
+import { getBlogs } from "./_lib/get-blogs";
 
 export const metadata: Metadata = {
   title: "My Blogs | Ahmad Siddique",
@@ -41,7 +34,8 @@ export const metadata: Metadata = {
   },
 };
 
-const BlogPage = () => {
+export default async function BlogPage() {
+  const blogs = await getBlogs();
   return (
     <main id="main-content">
       <div className="mb-6  pt-10">
@@ -92,4 +86,3 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;

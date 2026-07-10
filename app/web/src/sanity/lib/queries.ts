@@ -1,6 +1,6 @@
 import { defineQuery } from 'next-sanity'
 
-export const getBlogs = defineQuery(`
+export const getBlogsQuery = defineQuery(`
   *[_type == "blog"] {
     _id,
     title,
