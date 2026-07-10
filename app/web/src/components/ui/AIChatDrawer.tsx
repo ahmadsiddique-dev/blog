@@ -3,12 +3,12 @@
 import { useChat } from "@ai-sdk/react";
 import { useEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
-import { Card } from "../ui/card";
-import { Skeleton } from "../ui/skeleton";
-import { Button } from "../ui/button";
+import { Card } from "./card";
+import { Skeleton } from "./skeleton";
+import { Button } from "./button";
 import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
-import { InputGroup, InputGroupAddon, InputGroupText, InputGroupTextarea } from "../ui/input-group";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { InputGroup, InputGroupAddon, InputGroupText, InputGroupTextarea } from "./input-group";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 import { ArrowUp, Bot, X } from "lucide-react";
 
 const AssistantSkeleton = () => (
