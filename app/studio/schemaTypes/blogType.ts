@@ -32,14 +32,14 @@ export const BlogType = defineType({
     //       .max(50)
     //       .error('Author name must be between 3 and 50 characters long.'),
     // }),
+    // defineField({
+    //   name: 'time',
+    //   type: 'datetime',
+    //   title: 'Published At',
+    //   initialValue: new Date().toISOString(),
+    // }),
     defineField({
-      name: 'publishedAt',
-      type: 'datetime',
-      title: 'Published At',
-      initialValue: new Date().toISOString(),
-    }),
-    defineField({
-      name: 'readTime',
+      name: 'time',
       type: 'number',
       title: 'Read Time (in minutes)',
       validation: (Rule) => Rule.required(),

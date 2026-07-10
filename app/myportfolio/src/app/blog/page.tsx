@@ -1,9 +1,19 @@
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, BookOpenText, CalendarRange, User } from "lucide-react";
+import { ArrowLeft, BookOpenText, CalendarRange } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import blogsData from "@/data/blogs.json";
 import { Metadata } from "next";
+
+export interface Blog {
+    id: string;
+    slug: string;
+    title: string;
+    image: string;
+    description: string;
+    date: string;
+    readTime: string;
+}
 
 export const metadata: Metadata = {
   title: "My Blogs | Ahmad Siddique",
@@ -16,7 +26,7 @@ export const metadata: Metadata = {
     url: "https://ahmadsiddique.dev/blog",
     images: [
       {
-        url: "https://ahmadsiddique.dev/preview.png",
+        url: "https://ahmadsiddique.dev/preview.png", // This image is inappropriate for this size.
         width: 1200,
         height: 630,
         alt: "Ahmad Siddique Blog",
@@ -70,10 +80,6 @@ const BlogPage = () => {
                     <BookOpenText size={16} />
                     {blog.readTime}
                   </span>
-                  {/* <span className="flex items-center gap-1.5 whitespace-nowrap">
-                  <User size={16} />
-                  {blog.author}
-                </span> */}
                 </div>
                 <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 line-clamp-3 leading-relaxed">
                   {blog.description}
