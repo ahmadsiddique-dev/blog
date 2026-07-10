@@ -79,21 +79,7 @@
         },
         "optional": true
       },
-      "author": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "publishedAt": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "readTime": {
+      "time": {
         "type": "objectAttribute",
         "value": {
           "type": "number"
