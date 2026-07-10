@@ -11,8 +11,7 @@ export interface Blog {
     title: string;
     image: string;
     description: string;
-    date: string;
-    readTime: string;
+    time: string;
 }
 
 export const metadata: Metadata = {

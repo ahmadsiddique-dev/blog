@@ -55,7 +55,7 @@ export const BlogType = defineType({
           .error('Description must be between 10 and 300 characters long.'),
     }),
     defineField({
-      name: 'thumbnail',
+      name: 'image',
       type: 'image',
       title: 'Thumbnail',
       options: {
