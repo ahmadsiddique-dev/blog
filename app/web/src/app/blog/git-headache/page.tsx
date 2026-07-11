@@ -3,6 +3,7 @@ import GitHeadace from "@/components/md/blog/git-headache.mdx";
 import BlogFooter from "@/components/elements/BlogFooter";
 import { Metadata } from "next";
 import blogsData from "@/data/blogs.json";
+import { getBlog } from "../[slug]/_lib/get-blog";
 
 const blogInfo = blogsData.blogs.find((b) => b.slug === "blog/git-headache");
 
@@ -32,7 +33,9 @@ export const metadata: Metadata = {
   },
 };
 
-const page = () => {
+const page = async () => {
+  const blog = await getBlog("multan-the-city-of-saints");
+  console.log(blog);
   return (
     <main id="main-content" className="my-10">
       <BlogNav />
