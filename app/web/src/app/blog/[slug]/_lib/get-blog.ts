@@ -1,10 +1,9 @@
 import { client } from "@/sanity/client";
 import { getBlogQuery } from "@/sanity/lib/queries";
+import { GetBlogQueryResult } from "@/sanity/types";
 
 export async function getBlog(slug: string) {
-  const blog = await client.fetch(getBlogQuery, {
+  return client.fetch<GetBlogQueryResult>(getBlogQuery, {
     slug,
   });
-  console.log(blog);
-  return blog;
 }

@@ -34,8 +34,6 @@ export const metadata: Metadata = {
 };
 
 const page = async () => {
-  const blog = await getBlog("multan-the-city-of-saints");
-  console.log(blog);
   return (
     <main id="main-content" className="my-10">
       <BlogNav />

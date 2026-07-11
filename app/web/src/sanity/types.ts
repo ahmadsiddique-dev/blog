@@ -209,21 +209,64 @@ export type AllSanitySchemaTypes =
 
 // Source: ../web/src/sanity/lib/queries.ts
 // Variable: getBlogsQuery
-// Query: *[_type == "blog"] {    _id,    title,    slug,    time,    description,    "image": image.asset->url  }
+// Query: *[_type == "blog"] {    _id,    title,    slug,    time,    createdAt,    description,    "image": image.asset->url  }
 export type GetBlogsQueryResult = Array<{
   _id: string;
   title: string;
   slug: Slug;
-  createdAt: string;
   time: number;
+  createdAt: string;
   description: string;
   image: string;
+}>;
+
+// Source: ../web/src/sanity/lib/queries.ts
+// Variable: getBlogQuery
+// Query: *[show == true && slug.current == $slug]{  _id,  title,  "image": image.asset->url,  time,  description,  detail,  createdAt, }
+export type GetBlogQueryResult = Array<{
+  _id: string;
+  title: string | null;
+  image: string | null;
+  time: number | null;
+  description: string | null;
+  detail: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }
+  > | null;
+  createdAt: string | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "blog"] {\n    _id,\n    title,\n    slug,\n    time,\n    description,\n    "image": image.asset->url\n  }\n': GetBlogsQueryResult;
+    '\n  *[_type == "blog"] {\n    _id,\n    title,\n    slug,\n    time,\n    createdAt,\n    description,\n    "image": image.asset->url\n  }\n': GetBlogsQueryResult;
+    '\n  *[show == true && slug.current == $slug]{\n  _id,\n  title,\n  "image": image.asset->url,\n  time,\n  description,\n  detail,\n  createdAt,\n }\n  ': GetBlogQueryResult;
   }
 }
